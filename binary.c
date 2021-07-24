@@ -7,7 +7,7 @@ int main()
     printf("enter the size of the array\n");
     scanf("%d", &size);
     printf("according to the binary search, enter the element in the sorted order\n");
-    for (counter = 0; counter <= size; counter++)
+    for (counter = 0; counter <= size-1; counter++)
     {
         scanf("%d", &arr[counter]);
     }
@@ -17,24 +17,23 @@ int main()
     right = size - 1;
 
     // printf(" mid is %d",mid);
-    while (left < right)
+    while (left <= right)
     {
         mid = (left + right) / 2;
-        printf("mid is %d", mid);
+        // printf("mid is %d", mid);
         if (arr[mid] > element)
         {
             right = mid - 1;
-            mid = (left + right) / 2;
+           // mid = (left + right) / 2;
         }
-        else if (arr[mid] == element)
+        else if (arr[mid] < element)
         {
-            printf("element is found at %d location", mid);
+           left=mid+1;
+        }
+        else if(arr[mid]==element)
+        {
+            printf("%d found at %d location",element,mid);
             break;
-        }
-        else
-        {
-            left = mid + 1;
-            mid = (left + right) / 2;
         }
     }
 
